@@ -8,12 +8,12 @@ Crouch_6,Move_forward_7,Move_backward_8,Diagonal_left_9,Diagonal_right_10,
 Stand_11,Rotation_foot_RLeg_12,Rotation_foot_LLeg_13,StandInit_14,StandZero_15,
 Sit_16,SitRelax_17]
 
-for i in range(1,len(listaMosse)):
-	print("Inizio a provare le possibili mosse sucessive alla posizione: " + str(i) + "\n")
-	for j in range(1,len(listaMosse)):
+for i in range(0,len(listaMosse)):
+	print("Inizio a provare le possibili mosse sucessive alla posizione: " + str(i+1) + "\n")
+	for j in range(0,len(listaMosse)):
 		if i != j:
-			StandInit_14.main("127.0.0.1",53015)
-			listaMosse[i].main("127.0.0.1",53015)
-			listaMosse[j].main("127.0.0.1",53015)
-			print("Mossa: "+ str(j) + "\n")
+			StandInit_14.main("127.0.0.1",53209)
+			listaMosse[i].main("127.0.0.1",53209)
+			listaMosse[j].main("127.0.0.1",53209)
+			print("Mossa: "+ str(j+1) + "\n")
 StandInit_14.main("127.0.0.1",53015)
