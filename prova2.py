@@ -16,3 +16,4 @@ for i in range(1,len(listaMosse)):
 			listaMosse[i].main("127.0.0.1",53015)
 			listaMosse[j].main("127.0.0.1",53015)
 			print("Mossa: "+ str(j) + "\n")
+StandInit_14.main("127.0.0.1",53015)
