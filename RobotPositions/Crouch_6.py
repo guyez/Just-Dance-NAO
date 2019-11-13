@@ -89,7 +89,7 @@ if __name__ == "__main__":
 
     robotIP = "127.0.0.1" #"192.168.1.11"
 
-    port = 61476 #9559 # Insert NAO port
+    port = 51556 #9559 # Insert NAO port
 
 
     if len(sys.argv) <= 1:
