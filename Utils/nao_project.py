@@ -27,9 +27,11 @@ def depth(x):
         return depth_first_search(x, forward=True, backward=False)
 
 
-def A(constraint_move,result,time=180,search_type='breadth'):
-    final_move = constraint_move[0]
-    cost_final_move = constraint_move[1]
+def A(couple,result,time=180,search_type='breadth'):
+    initial_move = couple[0]
+    cost_initial_move = couple[1]
+    final_move = couple[2]
+    cost_final_move = couple[3]
     
     #################
     ##  OPERAZIONI ##
@@ -89,11 +91,11 @@ def A(constraint_move,result,time=180,search_type='breadth'):
     ups=[]
     if search_type == 'breadth':
         for i in range(len(next(breadth(p)).path())-1):
-            ups.append(((next(breadth(p)).path())[i][1]["?m"])+ '.py')
+            ups.append(((next(breadth(p)).path())[i][1]["?m"]))
         print(ups)
     elif search_type == 'depth':
         for i in range(len(next(depth(p)).path())-1):
-            ups.append(((next(depth(p)).path())[i][1]["?m"])+ '.py')
+            ups.append(((next(depth(p)).path())[i][1]["?m"]))
         print(ups)
     else:
         print(' the only possible values for the argument search_type are "depth", "breadth" ')
