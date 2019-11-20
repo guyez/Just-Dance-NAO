@@ -89,14 +89,14 @@ def A(constraint_move,result,time=180,search_type='breadth'):
     ups=[]
     if search_type == 'breadth':
         for i in range(len(next(breadth(p)).path())-1):
-            ups.append(((next(breadth(p)).path())[i][1]["?m"])+ '.py')
+            ups.append(((next(breadth(p)).path())[i][1]["?m"]))
         print(ups)
     elif search_type == 'depth':
         for i in range(len(next(depth(p)).path())-1):
-            ups.append(((next(depth(p)).path())[i][1]["?m"])+ '.py')
+            ups.append(((next(depth(p)).path())[i][1]["?m"]))
         print(ups)
     else:
         print(' the only possible values for the argument search_type are "depth", "breadth" ')
 
-    result.append(ups)
+    result += ups
     result.append(final_move)
