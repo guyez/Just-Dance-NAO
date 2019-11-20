@@ -27,11 +27,9 @@ def depth(x):
         return depth_first_search(x, forward=True, backward=False)
 
 
-def A(couple,result,time=180,search_type='breadth'):
-    initial_move = couple[0]
-    cost_initial_move = couple[1]
-    final_move = couple[2]
-    cost_final_move = couple[3]
+def A(constraint_move,result,time=180,search_type='breadth'):
+    final_move = constraint_move[0]
+    cost_final_move = constraint_move[1]
     
     #################
     ##  OPERAZIONI ##
@@ -45,13 +43,13 @@ def A(couple,result,time=180,search_type='breadth'):
      ('StateCounter','?s'),					#            contatore delle mosse eseguite: s,
      (ge,'?t','?c')							#            il tempo t disponibile deve essere maggiore di c,
      ],
-    [('not',('Time','?t')),				#Effetti: il tempo disponibile non è più t,
+    [('not',('Time','?t')),				#Effetti: il tempo disponibile is no more t,
      ('Time',(sub,'?t','?c')),				#       il tempo disponbile diventa t-c ,
-     ('not',('StateCounter','?s')),			#       il contatore non è più s,
+     ('not',('StateCounter','?s')),			#       il contatore is no more  s,
      ('StateCounter',(add,'?s',1))			#       il contatore si aggiorna a s+1
      ])
      
-    #Applicare mossa per verificare le condizioni di successo (Non si può fare direttamente da 'goal' in quanto non si possono esprimere condizioni di >,<,>=,<= ): check
+    #Applicare mossa per verificare le condizioni di successo (Non si puo fare direttamente da 'goal' in quanto non si possono esprimere condizioni di >,<,>=,<= ): check
     check = Operator('check',
     [									#Prerequisiti: check
     ('StateCounter','?s'),					#            contatore delle mosse eseguite: s,
@@ -91,11 +89,11 @@ def A(couple,result,time=180,search_type='breadth'):
     ups=[]
     if search_type == 'breadth':
         for i in range(len(next(breadth(p)).path())-1):
-            ups.append(((next(breadth(p)).path())[i][1]["?m"]))
+            ups.append(((next(breadth(p)).path())[i][1]["?m"])+ '.py')
         print(ups)
     elif search_type == 'depth':
         for i in range(len(next(depth(p)).path())-1):
-            ups.append(((next(depth(p)).path())[i][1]["?m"]))
+            ups.append(((next(depth(p)).path())[i][1]["?m"])+ '.py')
         print(ups)
     else:
         print(' the only possible values for the argument search_type are "depth", "breadth" ')
