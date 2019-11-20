@@ -43,13 +43,13 @@ def A(constraint_move,result,time=180,search_type='breadth'):
      ('StateCounter','?s'),					#            contatore delle mosse eseguite: s,
      (ge,'?t','?c')							#            il tempo t disponibile deve essere maggiore di c,
      ],
-    [('not',('Time','?t')),				#Effetti: il tempo disponibile non è più t,
+    [('not',('Time','?t')),				#Effetti: il tempo disponibile non ,
      ('Time',(sub,'?t','?c')),				#       il tempo disponbile diventa t-c ,
-     ('not',('StateCounter','?s')),			#       il contatore non è più s,
+     ('not',('StateCounter','?s')),			#       il contatore non s,
      ('StateCounter',(add,'?s',1))			#       il contatore si aggiorna a s+1
      ])
      
-    #Applicare mossa per verificare le condizioni di successo (Non si può fare direttamente da 'goal' in quanto non si possono esprimere condizioni di >,<,>=,<= ): check
+    #Applicare mossa per verificare le condizioni di successo (Non si pu fare direttamente da 'goal' in quanto non si possono esprimere condizioni di >,<,>=,<= ): check
     check = Operator('check',
     [									#Prerequisiti: check
     ('StateCounter','?s'),					#            contatore delle mosse eseguite: s,
