@@ -97,10 +97,15 @@ def bidirectional(problem):
 
 p = StateSpacePlanningProblem(start, goal, [mossa,check])
 
-compare_searches([p], [progression,  regression,
-                       bidirectional])
+#compare_searches([p], [progression,  regression,
+#                       bidirectional])
 
-print(next(progression(p)).path())
-path = next(regression(p)).path()
+ups=[]
+for i in range(len(next(progression(p)).path())-1):
+    ups.append(((next(progression(p)).path())[i][1]["?m"]))
+print(ups)
 
-print(path[0][0])
+#path = next(regression(p)).path()
+
+#for i in path:
+#    print(path[i][0]["?m"])
