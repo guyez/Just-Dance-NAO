@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(description='Argument parser')
 parser.add_argument('--port', dest='port', type=int, default=9559, help='number of the virtual robot port')
 parser.add_argument('--ip', dest='ip',type=str,default='127.0.0.1', help='ip number')
 parser.add_argument('--song', dest='song', type=str, default='RockNRollRobot.mp3', help="Song's name")
-parser.add_argument('--search', dest='search', type=str, default='breadth', help='Name of the search algorithm. The only possible values for are depth and breadth')
+parser.add_argument('--search', dest='search', type=str, default='breadth', help='Name of the search algorithm. The only possible values are depth and breadth')
 args = parser.parse_args()
 
 def main(robotIP,port,song_name = 'RockNRollRobot.mp3',search_type = 'breadth'):
@@ -51,6 +51,9 @@ if __name__ == "__main__":
 	robotIP = args.ip
 	song_name = args.song
 	search_type = args.search
+	if(search_type != 'depth' and search_type != 'breadth'):
+		print('The only possible values for --search argument are depth and breadth')
+		exit(1)
 	main(robotIP, port, song_name, search_type)
 	
 
