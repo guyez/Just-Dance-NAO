@@ -54,7 +54,7 @@ def A(constraint_move,result,time=180,search_type='breadth'):
     [									#Prerequisiti: check
     ('StateCounter','?s'),					#            contatore delle mosse eseguite: s,
     ('Time','?t'),							#            tempo rimanente: t,
-    (le,'?t',0.5),							#            il tempo rimanente deve essere inferiore ad una soglia (in questo caso ho impostato 0.5),
+    (le,'?t',1.3),							#            il tempo rimanente deve essere inferiore ad una soglia (in questo caso ho impostato 0.5),
     (ge,'?s',5)								#            il contatore delle mosse eseguite deve essere maggiore o uguale a 5,
     ],
     [('not',('Check','NO')),				#Effetti: passiamo da Check NO a Check SI
@@ -66,10 +66,10 @@ def A(constraint_move,result,time=180,search_type='breadth'):
     start = [('Time',period),
                      ('StateCounter',0),
                      ('Check','NO'),
-                     ('Move','AirGuitar'),('Cost','AirGuitar',4),
-                     ('Move','ArmDance'),('Cost','ArmDance',10),
-                     ('Move','BlowKisses'),('Cost','BlowKisses',4.2),
-                     ('Move','Bow'),('Cost','Bow',3),
+                     ('Move','AirGuitar'),('Cost','AirGuitar',5),
+                     ('Move','ArmDance'),('Cost','ArmDance',11),
+                     ('Move','BlowKisses'),('Cost','BlowKisses',5),
+                     ('Move','Bow'),('Cost','Bow',4),
                      ('Move','DanceMove'),('Cost','DanceMove',6),
                      ('Move','SprinklerL'),('Cost','SprinklerL',4),
                      ('Move','SprinklerR'),('Cost','SprinklerR',4),

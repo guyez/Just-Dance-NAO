@@ -15,7 +15,7 @@ def main(robotIP, port):
 	except Exception,e:
 		print("Could not create a proxy to ALTextToSpeech")
 	
-		ttsProxy.say("Blow kisses!")
+	ttsProxy.say("Blow kisses!")
 
 	names.append("HeadPitch")
 	times.append([0.2, 0.6, 1.4, 2.04, 2.4, 3.2, 3.84, 4.2])
