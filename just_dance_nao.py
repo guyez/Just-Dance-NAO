@@ -15,7 +15,7 @@ parser.add_argument('--song', dest='song', type=str, default='RockNRollRobot.mp3
 parser.add_argument('--search', dest='search', type=str, default='breadth', help='Name of the search algorithm. The only possible values are depth and breadth')
 args = parser.parse_args()
 
-def main(robotIP,port,song_name = 'RockNRollRobot.mp3',search_type = 'breadth'):
+def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = 'breadth'):
 	initial_move = ('StandInit',1.13)
 	time_initial_move = initial_move[1]
 	constr_moves = [('Stand',2.02),('Sit',3.02),('Hello',4.02),('StandZero',2.02),('SitRelax',3.02),('WipeForehead',4.02),('Crouch',2.02)]

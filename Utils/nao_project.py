@@ -89,7 +89,7 @@ def A(constraint_move,result,time=180,search_type='breadth'):
 
 
 
-    p = StateSpacePlanningProblem(start, goal, [mossa,check])
+    p = StateSpacePlanningProblem(start, goal, [move,check])
      
     ups=[]
     if search_type == 'breadth':
