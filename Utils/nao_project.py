@@ -1,3 +1,5 @@
+## Importing Modules ##
+
 from operator import ge
 from operator import gt
 from operator import eq
@@ -20,44 +22,47 @@ from py_search.uninformed import iterative_sampling
 from py_plan.total_order import StateSpacePlanningProblem
 from py_plan.base import Operator
 
+## Defining two types of Non-Informed Search Strategies ## 
+
 def breadth(x):
         return breadth_first_search(x, forward=True, backward=False)
     
 def depth(x):
         return depth_first_search(x, forward=True, backward=False)
 
+## Defining the algorithm A ##
 
 def A(constraint_move,result,time=180,search_type='breadth'):
     final_move = constraint_move[0]
     cost_final_move = constraint_move[1]
     
     #################
-    ##  OPERAZIONI ##
+    ##  OPERATIONS ##
     #################
 
-    #Applicare mossa non obbligatoria: mossa
-    mossa = Operator('mossa',
-    [('Move','?m'),						#Prerequisiti: mossa: m,
-     ('Cost','?m','?c'),					#            costo della mossa m (tempo che ci impiega): c,
-     ('Time','?t'),							#            tempo al momento in cui si fa la mossa: t,
-     ('StateCounter','?s'),					#            contatore delle mosse eseguite: s,
-     (ge,'?t','?c')							#            il tempo t disponibile deve essere maggiore di c,
+    #Applying an intermediate position: move
+    move = Operator('mossa',
+    [('Move','?m'),						#Preconditions: move: m,
+     ('Cost','?m','?c'),					#               cost of the move m (time required): c,
+     ('Time','?t'),						#               time when move m is performed: t,
+     ('StateCounter','?s'),					#               counter of the executed moves: s,
+     (ge,'?t','?c')						#               available time t must be greater than c.
      ],
-    [('not',('Time','?t')),				#Effetti: il tempo disponibile is no more t,
-     ('Time',(sub,'?t','?c')),				#       il tempo disponbile diventa t-c ,
-     ('not',('StateCounter','?s')),			#       il contatore is no more  s,
-     ('StateCounter',(add,'?s',1))			#       il contatore si aggiorna a s+1
+    [('not',('Time','?t')),				        #Postconditions: available time must be less than or equal to t,
+     ('Time',(sub,'?t','?c')),				        #                available time becomes t-c ,
+     ('not',('StateCounter','?s')),			        #                counter is no longer s,
+     ('StateCounter',(add,'?s',1))			        #                counter is updated to s+1.
      ])
      
-    #Applicare mossa per verificare le condizioni di successo (Non si puo fare direttamente da 'goal' in quanto non si possono esprimere condizioni di >,<,>=,<= ): check
+    #Applying a move to verify the constraints to be satisfied (It is not possible to do this operation directly from the Goal state since it is not possible to express conditions of >,<,>=,<= ): check
     check = Operator('check',
-    [									#Prerequisiti: check
-    ('StateCounter','?s'),					#            contatore delle mosse eseguite: s,
-    ('Time','?t'),							#            tempo rimanente: t,
-    (le,'?t',0.2),							#            il tempo rimanente deve essere inferiore ad una soglia,
-    (ge,'?s',5)								#            il contatore delle mosse eseguite deve essere maggiore o uguale a 5,
+    [								#Preconditions: check
+    ('StateCounter','?s'),					#               counter of the executed moves: s,
+    ('Time','?t'),						#               time left: t,
+    (le,'?t',0.2),						#               time left must be less than a given threshold,
+    (ge,'?s',5)							#               counter of the executed moves must be greater than or equal to 5,
     ],
-    [('not',('Check','NO')),				#Effetti: passiamo da Check NO a Check SI
+    [('not',('Check','NO')),				        #Postconditions: moving from Check NO to Check SI
     ('Check','SI')])
      
      
