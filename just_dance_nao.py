@@ -1,6 +1,7 @@
 import importlib
 import os
 import argparse
+import time
 from mutagen.mp3 import MP3
 from pygame import mixer
 from Utils import nao_project
@@ -31,7 +32,7 @@ def main(robotIP,port,song_name = 'RockNRollRobot.mp3',search_type = 'breadth'):
 	song_length = round(total_length,2)
 	#print(song_length)
 	for i in constr_moves:
-		nao_project.A(i,result,song_length - time_initial_move,search_type)
+		nao_project.A(i,result,song_length - time_initial_move - 3,search_type)
 	print(result)
 	
 	mixer.init()
@@ -41,9 +42,10 @@ def main(robotIP,port,song_name = 'RockNRollRobot.mp3',search_type = 'breadth'):
 	for i,move in enumerate(result):
 		importlib.import_module("." + move,"RobotPositions").main(robotIP,port)
 	
-	playing_time = round(mixer.music.get_pos()/1000.0,2)
-	while ((total_length - playing_time) > 0):
-		playing_time = round(mixer.music.get_pos()/1000.0,2)
+	time.sleep(2)
+	# playing_time = round(mixer.music.get_pos()/1000.0,2)
+	# while ((total_length - playing_time) > 0):
+		# playing_time = round(mixer.music.get_pos()/1000.0,2)
 	
 	
 if __name__ == "__main__":

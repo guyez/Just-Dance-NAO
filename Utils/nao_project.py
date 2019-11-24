@@ -54,7 +54,7 @@ def A(constraint_move,result,time=180,search_type='breadth'):
     [									#Prerequisiti: check
     ('StateCounter','?s'),					#            contatore delle mosse eseguite: s,
     ('Time','?t'),							#            tempo rimanente: t,
-    (le,'?t',1.3),							#            il tempo rimanente deve essere inferiore ad una soglia (in questo caso ho impostato 0.5),
+    (le,'?t',1.3),							#            il tempo rimanente deve essere inferiore ad una soglia,
     (ge,'?s',5)								#            il contatore delle mosse eseguite deve essere maggiore o uguale a 5,
     ],
     [('not',('Check','NO')),				#Effetti: passiamo da Check NO a Check SI
