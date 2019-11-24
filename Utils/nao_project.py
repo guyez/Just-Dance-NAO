@@ -54,7 +54,7 @@ def A(constraint_move,result,time=180,search_type='breadth'):
      ('StateCounter',(add,'?s',1))			        #                counter is updated to s+1.
      ])
      
-    #Applying a move to verify the constraints to be satisfied (It is not possible to do this operation directly from the Goal state since it is not possible to express conditions of >,<,>=,<= ): check
+    #Applying move to verify the successful conditions, i.e. a path given the problem description and satisfies all the constraints (It is not possible to do this operation directly from the Goal state since it is not possible to express conditions of >,<,>=,<= ): check
     check = Operator('check',
     [								#Preconditions: check
     ('StateCounter','?s'),					#               counter of the executed moves: s,
