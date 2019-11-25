@@ -14,16 +14,18 @@ MEMBERS NAME AND EMAIL: </br>
 | PYTHON 2 IS REQUIRED TO TEST THE PROJECT! | 
 '-------------------------------------------'
 
-NECESSARY LIBRARIES FOR TESTING THE PROJECT:
-		py_plan 
-		py_search 
-		pygame
-		mutagen
+NECESSARY LIBRARIES FOR TESTING THE PROJECT: </br>
+		py_plan </br>
+		py_search </br>
+		pygame </br>
+		mutagen </br>
 
-How to run the project?
-		- Open the Command Prompt
-		- Change the directory to the project folder
-		- Launch the project by typing: just_dance_nao.py --port YourNAORobotPortNumber 
+</br>
+
+How to run the project? </br>
+		- Open the Command Prompt </br>
+		- Change the directory to the project folder </br>
+		- Launch the project by typing: just_dance_nao.py --port YourNAORobotPortNumber  </br>
 		
 
 
