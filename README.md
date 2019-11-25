@@ -1,8 +1,8 @@
 # Just-Dance-NAO
 
 Fundamentals of Artificial Intelligence and Knowledge Representation </br>
-NAO Planning Challenge 2019 </br>
-TEAM NAME: Just Dance NAO </br>
+- NAO Planning Challenge 2019 </br>
+- - Team Name: Just Dance NAO </br>
 
 ## Getting Started
 - Open the Command Prompt </br>
@@ -10,10 +10,10 @@ TEAM NAME: Just Dance NAO </br>
 - Launch the project by typing: `just_dance_nao.py --port YourNAORobotPortNumber`  </br>
 
 ### Prerequisites
-- py_plan https://pypi.org/project/py-plan/</br>
-- py_search https://pypi.org/project/py-search/</br>
-- pygame https://pypi.org/project/pygame/</br>
-- mutagen https://pypi.org/project/mutagen/</br>
+- py_plan - https://pypi.org/project/py-plan/</br>
+- py_search - https://pypi.org/project/py-search/</br>
+- pygame - https://pypi.org/project/pygame/</br>
+- mutagen - https://pypi.org/project/mutagen/</br>
 
 
 ## Authors
