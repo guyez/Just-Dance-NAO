@@ -18,7 +18,26 @@ args = parser.parse_args()
 def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = 'breadth'):
 	initial_move = ('StandInit',1.13)
 	time_initial_move = initial_move[1]
-	constr_moves = [('Stand',2.02),('Sit',3.02),('Hello',4.02),('StandZero',2.02),('SitRelax',3.02),('WipeForehead',4.02),('Crouch',2.02)]
+	# Moves
+	moves = [('AirGuitar',5.24),
+	('ArmDance',11.34),
+	('BlowKisses',4.64),
+	('Bow',4.6),
+	('DanceMove',6.04),
+	('SprinklerL',4.04),
+	('SprinklerR',4.04),
+	('Dab',3.04),
+	('TheRobot',6.04)]
+	
+	# Mandatory positions
+	constr_moves = [('Stand',2.02),
+	('Sit',3.02),
+	('Hello',4.02),
+	('StandZero',2.02),
+	('SitRelax',3.02),
+	('WipeForehead',4.02),
+	('Crouch',2.02)]
+	
 	result = [initial_move[0]]
 	
 	file_data = os.path.splitext(song_name)
@@ -31,8 +50,11 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
 
 	song_length = round(total_length,2)
 	#print(song_length)
+	
+	project = nao_project.project(constr_moves,moves,song_length - time_initial_move,search_type)
+	
 	for i in constr_moves:
-		nao_project.A(i,result,song_length - time_initial_move,search_type)
+		project.A(result,i)
 	print(result)
 	
 	mixer.init()
@@ -48,7 +70,7 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
 		start = time.time()
 		importlib.import_module("." + move,"RobotPositions").main(robotIP,port)
 		if i == 0:
-			print('\n{0:20}  {1}\n'.format('Move', 'Cost(in seconds)'))
+			print('\n{0:20}  {1}\n'.format('Move', 'Cost (in seconds)'))
 		
 	print('{0:20}  {1}'.format(result[-1], round((time.time() - start),2)))
 	time.sleep(2)
