@@ -7,7 +7,7 @@ TEAM NAME: Just Dance NAO </br>
 ## Getting Started
 - Open the Command Prompt </br>
 - Change the directory to the project folder </br>
-- Launch the project by typing: just_dance_nao.py --port YourNAORobotPortNumber  </br>
+- Launch the project by typing: 'just_dance_nao.py --port YourNAORobotPortNumber'  </br>
 
 ### Prerequisites
 - py_plan </br>
