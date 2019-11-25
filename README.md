@@ -25,7 +25,7 @@ NAO Planning Challenge 2019 </br>
 
 ## Useful Links
 
-**Special Movements** - https://funlab.nd.edu/the-nao-base/special-movements/
+**Special Movements** - https://funlab.nd.edu/the-nao-base/special-movements/ </br>
 **Spotify playlist** - https://open.spotify.com/playlist/3nBdD3CigeiexPsubKnCxb?si=BkxprH0FSWOMZ9PjHQ9bkA
 
 
