@@ -1,8 +1,8 @@
 # Just-Dance-NAO
 
 Fundamentals of Artificial Intelligence and Knowledge Representation </br>
-- NAO Planning Challenge 2019 </br>
-- - Team Name: Just Dance NAO </br>
+NAO Planning Challenge 2019 </br>
+**Team Name: Just Dance NAO** </br>
 
 ## Getting Started
 - Open the Command Prompt </br>
