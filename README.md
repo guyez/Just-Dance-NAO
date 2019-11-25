@@ -1,5 +1,5 @@
 # Just-Dance-NAO
-Fundamentals of Artificial Intelligence and Knowledge Representation
+Fundamentals of Artificial Intelligence and Knowledge Representation </br>
 NAO Planning Challenge 2019
 
 
