@@ -10,10 +10,10 @@ TEAM NAME: Just Dance NAO </br>
 - Launch the project by typing: `just_dance_nao.py --port YourNAORobotPortNumber`  </br>
 
 ### Prerequisites
-- py_plan </br>
-- py_search </br>
-- pygame </br>
-- mutagen </br>
+- py_plan https://pypi.org/project/py-plan/</br>
+- py_search https://pypi.org/project/py-search/</br>
+- pygame https://pypi.org/project/pygame/</br>
+- mutagen https://pypi.org/project/mutagen/</br>
 
 
 ## Authors
