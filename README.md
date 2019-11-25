@@ -5,9 +5,9 @@ NAO Planning Challenge 2019 </br>
 **Team Name: Just Dance NAO** </br>
 
 ## Getting Started
-- Open the Command Prompt </br>
-- Change the directory to the project folder </br>
-- Launch the project by typing: `just_dance_nao.py --port YourNAORobotPortNumber`  </br>
+1. Open the Command Prompt </br>
+2. Change the directory to the project folder </br>
+3. Launch the project by typing: `just_dance_nao.py --port YourNAORobotPortNumber`  </br>
 
 ### Prerequisites
 - py_plan - https://pypi.org/project/py-plan/</br>
