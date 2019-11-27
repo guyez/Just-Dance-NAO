@@ -2,7 +2,7 @@
 
 **Team Name: Just Dance NAO** </br>
 Fundamentals of Artificial Intelligence and Knowledge Representation </br>
-NAO Planning Challenge 2019 </br>
+NAO Planning Competition 2019 </br>
 
 ## Getting Started
 1. Open the Command Prompt </br>
