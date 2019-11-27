@@ -14,7 +14,6 @@ def main(robotIP, port):
 		ttsProxy = ALProxy("ALTextToSpeech",robotIP,port)
 	except Exception,e:
 		print("Could not create a proxy to ALTextToSpeech")
-	
 				
 	names.append("LAnklePitch")
 	times.append([0.5, 2.05, 3.75])
