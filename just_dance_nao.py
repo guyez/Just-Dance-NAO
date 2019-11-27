@@ -32,7 +32,7 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
 	('TheRobot',6.04),
 	('ComeOn',4.61),
 	('StayingAlive',5.91),
-	('Rythm',3.96),
+	('Rhythm',3.96),
 	('PulpFiction',5.56)]
 	
 	constr_moves = [('Stand',2.02),             #List of the mandatory positions, expressed as a tuple containing the name of the move and its duration
