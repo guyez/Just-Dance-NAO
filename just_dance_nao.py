@@ -51,10 +51,10 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
 	song_length = round(total_length,2)
 	#print(song_length)
 	
-	project = nao_project.project(constr_moves,moves,song_length - time_initial_move,search_type)
+	our_project = nao_project.project(constr_moves,moves,song_length - time_initial_move,search_type)
 	
 	for i in constr_moves:
-		project.A(result,i)
+		our_project.A(result,i)
 	print(result)
 	
 	mixer.init()
