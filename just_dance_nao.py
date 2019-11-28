@@ -1,5 +1,6 @@
 # Import required libraries for the simulation:
 import importlib
+import socket
 import os
 import argparse
 import time
@@ -99,15 +100,23 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
 		#playing_time = round(mixer.music.get_pos()/1000.0,2)
 	
 	
-if __name__ == "__main__":                                                               
-	port = args.port
-	robotIP = args.ip
+if __name__ == "__main__":  
+
+	try:
+		socket.inet_aton(args.ip)
+		robotIP = args.ip
+	except socket.error:
+		print("Not a valid ip address")
+		exit(1)
+	if(search_type not in ['depth','breadth','iterdeep']):
+		print('The only possible values for --search argument are depth, breadthand iterdeep')
+		exit(2)
+		
+	port = args.port	
 	song_name = args.song
 	search_type = args.search
 	threshold = args.threshold
-	if(search_type not in ['depth','breadth','iterdeep']):
-		print('The only possible values for --search argument are depth, breadthand iterdeep')
-		exit(1)
+	
 	main(robotIP, port, song_name, search_type,threshold)
 	
 
