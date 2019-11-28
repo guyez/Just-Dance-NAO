@@ -44,18 +44,21 @@ class project:
 		#################
 
 		# Applying an intermediate position: move
-		move = Operator('mossa',
-		[('Move','?m'),						# Preconditions: move: m,
-		 ('Cost','?m','?c'),					# Cost of the move m (time required): c,
-		 ('Time','?t'),							# Time when move m is performed: t,
-		 ('StateCounter','?s'),					# Counter of the executed moves: s,
-		 (ge,'?t','?c')							# Available time t must be greater than c.
+		move = Operator('move',
+		[('Move','?m'),					# Preconditions: move: m,
+		 ('Cost','?m','?c'),				# Cost of the move m (time required): c,
+		 ('Time','?t'),						# Time when move m is performed: t,
+		 ('StateCounter','?s'),				# Counter of the executed moves: s,
+		 (ge,'?t','?c')						# Available time t must be greater than c.
 		 ],
-		[('not',('Time','?t')),				# Postconditions: available time must be less than or equal to t,
-		 ('Time',(sub,'?t','?c')),				# Available time becomes t-c ,
-		 ('not',('StateCounter','?s')),			# Counter is no longer s,
-		 ('StateCounter',(add,'?s',1))			# Counter is updated to s+1.
+		[('not',('Time','?t')),			# Postconditions: available time must be less than or equal to t,
+		 ('Time',(sub,'?t','?c')),			# Available time becomes t-c ,
+		 ('not',('StateCounter','?s')),		# Counter is no longer s,
+		 ('StateCounter',(add,'?s',1)),		# Counter is updated to s+1,
+		 ('not',('Move','?m'))				# Move '?m' is no more available
 		 ])
+		 
+
 		 
 		# Applying move to verify the successful conditions, i.e. a path given the problem description and satisfies all the constraints (It is not possible to do this operation directly from the Goal state since it is not possible to express conditions of >,<,>=,<= ): check
 		check = Operator('check',
@@ -65,35 +68,46 @@ class project:
 		(le,'?t',self.threshold),			# Time left must be less than a given threshold,
 		(ge,'?s',5)							# Counter of the executed moves must be greater than or equal to 5,
 		],
-		[('not',('Check','NO')),	 	# Postconditions: moving from Check NO to Check SI
-		('Check','SI')])
+		[('not',('Check','NO')),	 	# Postconditions: moving from Check NO to Check YES
+		('Check','YES')])
 		 
 		 
 
-		period=round((self.time/7) - cost_final_move,2)
-		move_cost_list = [[('Move',i[0]),('Cost',i[0],i[1])] for i in self.moves]
+		period = round((self.time/7) - cost_final_move,2)	# Available time for the execution of at least five moves
+		
+		# Initial state given by:
+		# Time = available time for the execution of at least five moves
+		# StateCounter = counter of the executed moves
+		# Moves = name of every possible move
+		# Cost = time required to execute each move
+		move_cost_list = [[('Move',i[0]),('Cost',i[0],i[1])] for indx,i in enumerate(self.moves)]
 		start = [('Time',period),('StateCounter',0)]
 		for k in move_cost_list:
 			start += k
-		goal = [('Check','SI')]
+		
+		# Checking if the termination conditions are satisfied
+		goal = [('Check','YES')]
 
-		p = StateSpacePlanningProblem(start, goal, [move,check])
-		 
-		temp_path=[]
+		# Defining the problem and search for the path towards the solution
+		p = StateSpacePlanningProblem(start, goal, [move,check]) 
+		temp_result = []
 		if self.search_type == 'breadth':
-			for i in range(len(next(self.breadth(p)).path())-1):
-				temp_path.append(((next(self.breadth(p)).path())[i][1]["?m"]))
-			print(temp_path)
+			temp_path = (next(self.depth(p)).path())
+			for i in range(len(temp_path)-1):
+				temp_result.append(temp_path[i][1]['?m'])
+			print(temp_result)
 		elif self.search_type == 'depth':
-			for i in range(len(next(self.depth(p)).path())-1):
-				temp_path.append(((next(self.depth(p)).path())[i][1]["?m"]))
-			print(temp_path)
+			temp_path = (next(self.depth(p)).path())
+			for i in range(len(temp_path)-1):
+				temp_result.append(temp_path[i][1]['?m'])
+			print(temp_result)
 		elif self.search_type == 'iterdeep':
-			for i in range(len(next(self.iterative_deepening(p)).path())-1):
-				temp_path.append(((next(self.iterative_deepening(p)).path())[i][1]["?m"]))
-			print(temp_path)
+			temp_path = (next(self.depth(p)).path())
+			for i in range(len(temp_path)-1):
+				temp_result.append(temp_path[i][1]['?m'])
+			print(temp_result)
 		else:
 			print(' the only possible values for the argument search_type are "depth", "breadth", "iterdeep" ')
 
-		result += temp_path
+		result += temp_result
 		result.append(final_move)
