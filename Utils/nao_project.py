@@ -15,7 +15,7 @@ from py_plan.total_order import StateSpacePlanningProblem
 from py_plan.base import Operator
 
 class project:
-	def __init__(self,constraint_moves,moves,time=180,search_type='breadth',threshold = 0.5):
+	def __init__(self,constraint_moves,moves,time=180,search_type='iterdeep',threshold = 0.1):
 		self.constraint_moves = constraint_moves
 		self.moves = moves
 		self.time = time
@@ -31,7 +31,7 @@ class project:
 		return depth_first_search(x, forward=True, backward=False)
 		
 	def iterative_deepening(self,x):
-		return iterative_deepening_search(x,max_depth_limit = 7)
+		return iterative_deepening_search(x)
 
 	# Defining the algorithm A 
 

@@ -14,9 +14,9 @@ parser = argparse.ArgumentParser(description='Argument parser')
 parser.add_argument('--port', dest='port', type=int, default=9559, help='number of the virtual robot port') 
 parser.add_argument('--ip', dest='ip',type=str,default='127.0.0.1', help='ip number')
 parser.add_argument('--song', dest='song', type=str, default='RockNRollRobot.mp3', help="Song's name")
-parser.add_argument('--search', dest='search', type=str, default='breadth', 
+parser.add_argument('--search', dest='search', type=str, default='iterdeep', 
 help='Name of the search algorithm. The only possible values are depth, breadth, iterdeep')
-parser.add_argument('--threshold', dest='threshold', type=float, default=0.5, help="Threshold")
+parser.add_argument('--threshold', dest='threshold', type=float, default=0.1, help="Threshold")
 args = parser.parse_args()
 
 # Function that is executed: it searches and executes the optimal sequence of moves with respect to the song's duration 
@@ -108,13 +108,13 @@ if __name__ == "__main__":
 	except socket.error:
 		print("Not a valid ip address")
 		exit(1)
+	search_type = args.search
 	if(search_type not in ['depth','breadth','iterdeep']):
 		print('The only possible values for --search argument are depth, breadthand iterdeep')
 		exit(2)
 		
 	port = args.port	
 	song_name = args.song
-	search_type = args.search
 	threshold = args.threshold
 	
 	main(robotIP, port, song_name, search_type,threshold)
