@@ -1,9 +1,10 @@
 # Just-Dance-NAO
 
+![Image description](JustDanceNao.jpg)
+
 **Team Name: Just Dance NAO** </br>
 Fundamentals of Artificial Intelligence and Knowledge Representation </br>
 NAO Planning Competition 2019 </br>
-![Image description](JustDanceNao.jpg)
 
 ## Getting Started
 1. Open the Command Prompt </br>
@@ -16,7 +17,6 @@ NAO Planning Competition 2019 </br>
 - py_search - https://pypi.org/project/py-search/</br>
 - pygame - https://pypi.org/project/pygame/</br>
 - mutagen - https://pypi.org/project/mutagen/</br>
-
 
 ## Authors
 
