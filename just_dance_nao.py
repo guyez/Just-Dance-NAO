@@ -46,7 +46,7 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
 	('StandZero',2.02),
 	('SitRelax',3.02),
 	('WipeForehead',4.1),
-	('Crouch',2.08)]
+	('Crouch',1.05)]
 	
 	# List in which the sequence of moves to be executed is stored
 	result = [initial_move[0]]                  

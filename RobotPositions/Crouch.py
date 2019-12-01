@@ -1,76 +1,128 @@
 import sys
-
-import motion
-
-import almath
-
-import math
-
 import time
-
 from naoqi import ALProxy
 
-
-
-#def StiffnessOn(proxy):
-#    # We use the "Body" name to signify the collection of all joints
-#    pNames = "Body"
-#    pStiffnessLists = 1.0
-#    pTimeLists = 1.0
-#    proxy.stiffnessInterpolation(pNames, pStiffnessLists, pTimeLists)
-
-
 def main(robotIP, port):
+	names = list()
+	times = list()
+	keys = list()
 
+	names.append("HeadPitch")
+	times.append([1])
+	keys.append([[0.099661, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("HeadYaw")
+	times.append([1])
+	keys.append([[-0.00711237, [3, -0.333333, 0], [3, 0, 0]]])
 
-    # Init proxies.
+	names.append("LAnklePitch")
+	times.append([1])
+	keys.append([[-1.18, [3, -0.333333, 0], [3, 0, 0]]])
 
-    try:
+	names.append("LAnkleRoll")
+	times.append([1])
+	keys.append([[0.068992, [3, -0.333333, 0], [3, 0, 0]]])
 
-        motionProxy = ALProxy("ALMotion", robotIP, port)
+	names.append("LElbowRoll")
+	times.append([1])
+	keys.append([[-1.07296, [3, -0.333333, 0], [3, 0, 0]]])
 
-    except Exception, e:
+	names.append("LElbowYaw")
+	times.append([1])
+	keys.append([[-0.793177, [3, -0.333333, 0], [3, 0, 0]]])
 
-        print "Could not create proxy to ALMotion"
+	names.append("LHand")
+	times.append([1])
+	keys.append([[0.000844251, [3, -0.333333, 0], [3, 0, 0]]])
 
-        print "Error was: ", e
+	names.append("LHipPitch")
+	times.append([1])
+	keys.append([[-0.699185, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("LHipRoll")
+	times.append([1])
+	keys.append([[-0.073343, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("LHipYawPitch")
+	times.append([1])
+	keys.append([[-0.249199, [3, -0.333333, 0], [3, 0, 0]]])
 
-    try:
+	names.append("LKneePitch")
+	times.append([1])
+	keys.append([[2.1054, [3, -0.333333, 0], [3, 0, 0]]])
 
-        postureProxy = ALProxy("ALRobotPosture", robotIP, port)
+	names.append("LShoulderPitch")
+	times.append([1])
+	keys.append([[1.40121, [3, -0.333333, 0], [3, 0, 0]]])
 
-    except Exception, e:
+	names.append("LShoulderRoll")
+	times.append([1])
+	keys.append([[0.160449, [3, -0.333333, 0], [3, 0, 0]]])
 
-        print "Could not create proxy to ALRobotPosture"
+	names.append("LWristYaw")
+	times.append([1])
+	keys.append([[0.142231, [3, -0.333333, 0], [3, 0, 0]]])
 
-        print "Error was: ", e
+	names.append("RAnklePitch")
+	times.append([1])
+	keys.append([[-1.18, [3, -0.333333, 0], [3, 0, 0]]])
 
-    try:
-        ttsProxy = ALProxy("ALTextToSpeech", robotIP, port)
-    except Exception, e:
-        print "Could not create proxy to ALTextToSpeech"
-        print "Error was: ", e
+	names.append("RAnkleRoll")
+	times.append([1])
+	keys.append([[-0.068992, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("RElbowRoll")
+	times.append([1])
+	keys.append([[1.07296, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("RElbowYaw")
+	times.append([1])
+	keys.append([[0.793161, [3, -0.333333, 0], [3, 0, 0]]])
 
-    # Send NAO to Pose Crouch
+	names.append("RHand")
+	times.append([1])
+	keys.append([[0.000846233, [3, -0.333333, 0], [3, 0, 0]]])
 
-    postureProxy.goToPosture("Crouch", 0.5)
+	names.append("RHipPitch")
+	times.append([1])
+	keys.append([[-0.699185, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("RHipRoll")
+	times.append([1])
+	keys.append([[0.0759977, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("RHipYawPitch")
+	times.append([1])
+	keys.append([[-0.249199, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("RKneePitch")
+	times.append([1])
+	keys.append([[2.1054, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("RShoulderPitch")
+	times.append([1])
+	keys.append([[1.40122, [3, -0.333333, 0], [3, 0, 0]]])
 
-    
+	names.append("RShoulderRoll")
+	times.append([1])
+	keys.append([[-0.160239, [3, -0.333333, 0], [3, 0, 0]]])
 
+	names.append("RWristYaw")
+	times.append([1])
+	keys.append([[-0.141808, [3, -0.333333, 0], [3, 0, 0]]])
+
+	try:
+	  motion = ALProxy("ALMotion",robotIP,port)
+	  motion.angleInterpolationBezier(names, times, keys)
+	except BaseException, err:
+	  print err
+
+  
 if __name__ == "__main__":
 
-    robotIP = "127.0.0.1" #"192.168.1.11"
+    robotIP = "127.0.0.1"#"192.168.11.3"
 
-    port = 61476 #9559 # Insert NAO port
+    port = 55650 #9559 # Insert NAO port
 
 
     if len(sys.argv) <= 1:
@@ -82,4 +134,3 @@ if __name__ == "__main__":
         robotIP = sys.argv[1]
 
     main(robotIP, port)
-
