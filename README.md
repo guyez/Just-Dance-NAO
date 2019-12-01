@@ -1,6 +1,9 @@
 # Just-Dance-NAO
 
 **Team Name: Just Dance NAO** </br>
+
+![Image description](JustDanceNao.jpg)
+
 Fundamentals of Artificial Intelligence and Knowledge Representation </br>
 NAO Planning Competition 2019 </br>
 
@@ -15,7 +18,6 @@ NAO Planning Competition 2019 </br>
 - py_search - https://pypi.org/project/py-search/</br>
 - pygame - https://pypi.org/project/pygame/</br>
 - mutagen - https://pypi.org/project/mutagen/</br>
-
 
 ## Authors
 
