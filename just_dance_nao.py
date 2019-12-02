@@ -1,8 +1,6 @@
 # Import required libraries for the simulation:
 import importlib
 import socket
-import os
-import sys
 import argparse
 import time
 from mutagen.mp3 import MP3
