@@ -22,7 +22,7 @@ class project:
 		self.search_type = search_type
 		self.threshold = threshold
 		
-	# Defining two types of Non-Informed Search Strategies 
+	# Defining three types of Non-Informed Search Strategies 
 
 	def breadth(self,x):
 		return breadth_first_search(x, forward=True, backward=False)
@@ -60,7 +60,7 @@ class project:
 		 
 
 		 
-		# Applying move to verify the successful conditions, i.e. a path given the problem description and satisfies all the constraints (It is not possible to do this operation directly from the Goal state since it is not possible to express conditions of >,<,>=,<= ): check
+		# Applying check to verify the successful conditions, i.e. a path given the problem description and satisfies all the constraints (It is not possible to do this operation directly from the Goal state since it is not possible to express conditions of >,<,>=,<= ): check
 		check = Operator('check',
 		[								# Preconditions: check
 		('StateCounter','?s'),				# Counter of the executed moves: s,
