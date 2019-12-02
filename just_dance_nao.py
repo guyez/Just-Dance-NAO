@@ -2,6 +2,7 @@
 import importlib
 import socket
 import os
+import sys
 import argparse
 import time
 from mutagen.mp3 import MP3
@@ -87,13 +88,16 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
 	start = 0
 	for i,move in enumerate(result):
 		if i != 0:
-			print('{0:20}  {1}'.format(result[i-1], round((time.time() - start),2)))     
+			if ((i-1) % 6)==0:
+				print('\n' + '{0:20}  {1}'.format(result[i-1], round((time.time() - start),2)).upper() + '\n')
+			else:
+				print('{0:20}  {1}'.format(result[i-1], round((time.time() - start),2)))     
 		start = time.time()
 		importlib.import_module("." + move,"RobotPositions").main(robotIP,port)          
 		if i == 0:
-			print('\n{0:20}  {1}\n'.format('Move', 'Cost (in seconds)'))                
+			print('\n{0:20}  {1}'.format('Move', 'Cost (in seconds)'))                
 		
-	print('{0:20}  {1}'.format(result[-1], round((time.time() - start),2)))              
+	print('\n' + '{0:20}  {1}'.format(result[-1], round((time.time() - start),2)).upper() + '\n')              
 	time.sleep(2)
 	#playing_time = round(mixer.music.get_pos()/1000.0,2)
 	#while ((total_length - playing_time) > 0):
