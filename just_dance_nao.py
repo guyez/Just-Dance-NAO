@@ -50,7 +50,7 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
 	# List in which the sequence of moves to be executed is stored
 	result = [initial_move[0]]                  
 	
-	# Assign to file_data the song name passed to the function as an argument and recover the song length
+	# Assign to file_data the song name, passed to the function as an argument, and recover the song length
 	file_data = os.path.splitext(song_name)    
 	if file_data[1] == '.mp3':                  
 		audio = MP3("./Songs/" + song_name)
@@ -66,8 +66,8 @@ def main(robotIP,port,song_name = 'RockNRollRobot_from_0.11.mp3',search_type = '
     # The mandatory positions, the list of possible moves, the available time, the type of search
 	our_project = nao_project.project(constr_moves,moves,song_length - time_initial_move,search_type,threshold)   
 	
-    # For each of the mandatory positions run the method A in the class project with parameters the updated 
-    # List of the moves to be executed and the next mandatory move
+    # For each of the mandatory positions run the method A in the class project with parameters: 
+    # The updated list of the moves to be executed and the next mandatory move
 	start = time.time()
 	for i in constr_moves:
 		our_project.A(result,i)
