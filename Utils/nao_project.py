@@ -57,9 +57,7 @@ class project:
 		 ('StateCounter',(add,'?s',1)),		# Counter is updated to s+1,
 		 ('not',('Move','?m'))				# Move '?m' is no more available
 		 ])
-		 
-
-		 
+		 	 
 		# Applying check to verify the successful conditions, i.e. a path given the problem description and satisfies all the constraints (It is not possible to do this operation directly from the Goal state since it is not possible to express conditions of >,<,>=,<= ): check
 		check = Operator('check',
 		[								# Preconditions: check
@@ -71,8 +69,6 @@ class project:
 		[('not',('Check','NO')),	 	# Postconditions: moving from Check NO to Check YES
 		('Check','YES')])
 		 
-		 
-
 		period = round((self.time/7) - cost_final_move,2)	# Available time for the execution of at least five moves
 		
 		# Initial state given by:
@@ -92,7 +88,7 @@ class project:
 		p = StateSpacePlanningProblem(start, goal, [move,check]) 
 		temp_result = []
 		if self.search_type == 'breadth':
-			temp_path = (next(self.depth(p)).path())
+			temp_path = (next(self.breadth(p)).path())
 			for i in range(len(temp_path)-1):
 				temp_result.append(temp_path[i][1]['?m'])
 			print(temp_result)
@@ -102,7 +98,7 @@ class project:
 				temp_result.append(temp_path[i][1]['?m'])
 			print(temp_result)
 		elif self.search_type == 'iterdeep':
-			temp_path = (next(self.depth(p)).path())
+			temp_path = (next(self.iterative_deepening(p)).path())
 			for i in range(len(temp_path)-1):
 				temp_result.append(temp_path[i][1]['?m'])
 			print(temp_result)

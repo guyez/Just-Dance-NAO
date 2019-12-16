@@ -14,7 +14,7 @@ parser = argparse.ArgumentParser(description='Argument parser')
 parser.add_argument('--port', dest='port', type=int, default=9559, help='number of the virtual robot port') 
 parser.add_argument('--ip', dest='ip',type=str,default='127.0.0.1', help='ip number')
 parser.add_argument('--song', dest='song', type=str, default='RockNRollRobot.mp3', help="Song's name")
-parser.add_argument('--search', dest='search', type=str, default='iterdeep', 
+parser.add_argument('--search', dest='search', type=str, default='depth', 
 help='Name of the search algorithm. The only possible values are depth, breadth, iterdeep')
 parser.add_argument('--threshold', dest='threshold', type=float, default=0.1, help="Threshold")
 args = parser.parse_args()
